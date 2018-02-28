@@ -6,7 +6,7 @@
 function foo(array $var) {} // Ожидается только массив
 ```
 
-С PHP 5.4 можно указать уточнение **callable **
+С PHP 5.4 можно указать уточнение **callable**
 
 ```php
 function bar(callable $var, $arg) {
