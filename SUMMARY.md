@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Области видимости переменных](oblasti-vidimosti-peremennih.md)
-* [Полезные функции](poleznie-funktsii.md)
+* [PHP - Области видимости переменных](oblasti-vidimosti-peremennih.md)
+* [PHP - Полезные функции](poleznie-funktsii.md)
+* [PHP - Функции](php-funktsii.md)
 
