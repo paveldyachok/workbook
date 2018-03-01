@@ -44,7 +44,7 @@ function sayHello() {
 }
 ```
 
-***
+---
 
 ### Уточнение типа
 
@@ -81,22 +81,33 @@ function foo(int $i, string $s, bool $b, int ...$nums):bool {}
 declare(strict_types=1);
 ```
 
-***
+---
 
 ### Языковые конструкции
 
 * die и exit
 * echo и print
 
- print - всегда возвращает 1.
- 
- echo - единственная конструкция, которая ничего не возващает.	
- 
+  print - всегда возвращает 1.
+
+  echo - единственная конструкция, которая ничего не возващает.
+
 * isset и unset
-* include и include_once
-* require и require_once
+
+* include и include\_once
+* require и require\_once
 * empty
 * eval
 * list
 * return
+
+---
+
+### Константы и псевдоконстанты
+
+Псевдоконстанты:
+
+* _LINE_
+
+
 
