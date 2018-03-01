@@ -95,7 +95,9 @@ declare(strict_types=1);
 * isset и unset
 
 * include и include\_once
+
 * require и require\_once
+
 * empty
 * eval
 * list
@@ -107,7 +109,18 @@ declare(strict_types=1);
 
 Псевдоконстанты:
 
-* _LINE_
+* `__LINE__` - возвращает номер строки в которой она прописана;
+* `__FILE__` - возвращает полный физический путь к файлу;
+* `__FUNCTION__` - прописанная в функции, вернёт имя этой функции;
+* `__DIR__` - возвращает полный физический путь к директории;
 
+---
+
+### Include / Require
+
+`include` - 
+`include_once` - 
+`require` - 
+`require_once` - 
 
 
