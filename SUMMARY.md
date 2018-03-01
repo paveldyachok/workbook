@@ -4,4 +4,5 @@
 * [PHP - Области видимости переменных](oblasti-vidimosti-peremennih.md)
 * [PHP - Полезные функции](poleznie-funktsii.md)
 * [PHP - Функции](php-funktsii.md)
+* [PHP - Языковые конструкции](php-language-constructs.md)
 
