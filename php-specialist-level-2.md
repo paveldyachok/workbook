@@ -1,4 +1,4 @@
-### Изучение Cookie {cookie}
+# Изучение Cookie # {#cookie}
 
 Для сохранения cookie используем функцию `setcookie();`. Которая принимает семь параметров, из которых один обязательный.
 ##### Cookie имеет время жизни
@@ -32,8 +32,7 @@ setcookie("user", $str);
 $user = unserialize(base64_decode($_COOKIE["user"]));
 ```
 
-### HTTP-заголовки ответа сервера {http-headers}
-
+# HTTP-заголовки ответа сервера # {#http-headers}
 ##### Переадресация ресурса
 
 ```php
