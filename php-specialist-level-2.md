@@ -262,3 +262,146 @@ $dir_txt_content = glob("*.txt");
 
 ## Основы работы с СУБД {#DBMS}
 
+Большие проекты начинаются с создания архитектуры БД!
+
+#### SQL
+
+SQL (англ. Structured Query Language — язык
+структурированных запросов). Универсальный язык, применяемый для создания, модификации и управления данными в реляционных базах данных.
+
+##### Удаление записи
+
+``` sql
+DELETE FROM lessons
+    WHERE date = '2014-06-11'
+```
+
+**!!!** Если не указать `WHERE` - удалятся все данные из выбранной таблицы. Вернуть эти данные без бекапа невозможно!
+
+##### Изменение записи
+
+``` sql
+UPDATE teachers
+ SET
+    zarplata = zarplata * 2,
+    premia = premia * 10
+ WHERE name LIKE 'Иванов%'
+    OR name LIKE 'Петров%'
+    OR name LIKE 'Сидоров%'
+
+UPDATE teachers
+ SET
+    zarplata = zarplata * 2,
+    premia = premia * 10
+ WHERE name IN
+    ('Иванов', 'Петров', 'Сидоров')
+```
+
+**!!!** Если не указать `WHERE` - удалятся все данные из выбранной таблицы.
+
+#### Сервер баз данных MySQL
+
+MySQL – один из самых распространенных **серверов** баз данных.
+
+Конфигурационный файл my.ini:
+
+- port = 3306
+- datadir = "c:\\users\\public\\openserver\\userdata\\MySQL-5.5"
+- default-storage-engine = InnoDB
+- init-connect = "SET NAMES utf8"
+- interactive_timeout = 30
+- wait_timeout = 60
+- connect_timeout = 5
+
+#### Использование сервера баз данных MySQL в приложениях PHP
+
+Алгоритм работы с СУБД MySQL:
+
+- Подключение необходимого расширения в PHP.INI
+- php_mysqli.dll
+- Установка соединения с сервером
+- Выбор базы данных для работы (при необходимости)
+- Исполнение запроса
+- Обработка данных (при необходимости)
+- Закрытие соединения
+
+##### Соединение с сервером баз данных
+
+``` php
+// Соединение и выбор базы данных
+$link = mysqli_connect('localhost', 'root', '', 'web');
+// Отслеживаем ошибки при соединении
+if(!$link) {
+    echo 'Ошибка: '
+            . mysqli_connect_errno()
+            . ':'
+            . mysqli_connect_error();
+}
+// Можно выбрать другую базу данных для работы
+mysqli_select_db($link, 'test');
+// Закрываем соединение
+mysqli_close($link);
+```
+
+Для распаковки получаемых данных из БД используем функцию `mysqli_fetch_array();`. По умолчанию получаем дублированный массив (индексированные и ассоциативные данные). Если нужен один из двух вариантов, используем такие запросы:
+
+``` php
+// Индексированный массив
+$row = mysqli_fetch_row($result);
+// или
+$row = mysqli_fetch_array($result, MYSQLI_NUM);
+
+// Ассоциативный массив
+$row = mysqli_fetch_assoc($result);
+// или
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+```
+
+``` php
+// Полная выборка: массив массивов
+$row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+```
+
+##### Полезные функции
+
+``` php
+$link = mysqli_connect('localhost', 'root', '', 'web');
+
+// Экранируем строки!
+$name = mysqli_real_escape_string($link, "John O'Brian");
+$sql = "INSERT INTO teachers(name, email) VALUES('$name', 'johnh@gmail.com')";
+mysqli_query($link, $sql);
+
+// Получаем первичный ключ новой записи
+$id = mysqli_insert_id($link);
+$sql = "DELETE FROM lessons WHERE room = 'БК-1'";
+mysqli_query($link, $sql);
+
+// Сколько записей изменено?
+$count = mysqli_affected_rows($link);
+$sql = "SELECT * FROM courses";
+$result = mysqli_query($link, $sql);
+
+// Сколько записей вернулось?
+$row_count = mysqli_num_rows($result);
+
+// Сколько полей в вернувшихся записях?
+$fields_count = mysqli_num_fields($result);
+```
+
+#### Опасность SQL-инъекций
+
+При явном получении числа необходимо принудительно приводить получаемые данные к числу, и только после этого передавать приведённую переменную в SQL запрос.
+
+При получении смешанных данных, можно использовать подготовленные запросы:
+
+``` php
+$sql = "INSERT INTO users(name, email, age) VALUES(?, ?, ?)";
+// Уважаемый сервер, вот запрос - разбери его
+$stmt = mysqli_prepare($link, $sql);
+// Уважаемый сервер, вот параметры для запроса
+mysqli_stmt_bind_param($stmt, "ssi", $name, $email, $age);
+// А теперь, исполни подготовленный запрос с переданными параметрами
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
+```
