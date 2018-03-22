@@ -9,6 +9,6 @@
   * [Операции с файлами и директориями](php-specialist-level-2.md#files-and-dirs)
   * [Основы работы с СУБД](php-specialist-level-2.md#DBMS)
 * [PHP - Специалист. Уровень - 3](php-specialist-level-3.md)
-  * [ООП](php-specialist-level-2.md#oop)
+  * [ООП](php-specialist-level-3.md#oop)
 * [PHP - Полезные функции](php-useful-function.md)
 * [GIT - Полезные команды](git-useful-commands.md)
