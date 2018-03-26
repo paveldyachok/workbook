@@ -224,3 +224,96 @@ function my_autoloader($class)
 
 spl_autoload_register('my_autoloader');
 ```
+
+#### Модификаторы доступа к свойствам и методам
+
+Существуют **три** модификатора доступа:
+
+* `public` - полный доступ отовсюда.
+* `protected` - запрещает обращение из вне класса. Только из самого класса или наследника.
+* `private` - разрешает доступ только из класса в котором объявлен.
+
+#### Доступ к недоступным свойствам и методам
+
+С помощью встроенных методов `__set()` и `__get()` мы можем получать доступ к недоступным свойствам. А спомощью метода `__call()` - к недоступным методам. Для доступа к статическому методу - `__callStatic()`.
+
+```php
+class SimpleHouse
+{
+    private $color = "none";
+
+    function __get($name)
+    {
+        switch ($name) {
+            case 'color': return $this->color;
+            default: throw new Exception('Неизвестное свойство!');
+        }
+    }
+
+    function __set($name, $value)
+    {
+        switch ($name) {
+            case 'color': $this->color = $value; break;
+            default: throw new Exception('Неизвестное свойство!');
+        }
+    }
+
+    function __call($n, $args)
+    {
+        echo "Call method $n with args";
+        print_r($args);
+    }
+
+    function __callStatic($n, $args)
+    {
+        echo "Call static method $n with args";
+        print_r($args);
+    }
+}
+
+$simple = new SimpleHouse("A-100-123", 120, 2);
+$simple->color = "white"; // Запускается __set() и устанавливает значение свойства $color = "white";
+echo $simple->color; // Заускается __get() и выдаёт значение свойства $color
+$simple->color("red"); // Запускается __call() и вызывается метод color c аргументом "red"
+$simple->staticFoo(1, 2, 3); // Запускается __call() и вызывается статический метод staticFoo c аргументами 1, 2, 3
+```
+
+#### Финальные классы и методы
+
+Финальные классы или методы определяються словом `final` переда `class` или `function`. Такие классы нельзя наследовать, но можно создавать экземпляры - противоположность абстрактным классам.
+
+Такие классы или методы создают тогда, когда ещё не полностью реализован весь функционал класса или метода.
+
+#### Типажи (traits)
+
+Выглядят как классы, только вместо `class` используем `trait`.
+
+```php
+trait Hello
+{
+    function getGreet()
+    {
+        return "Hello";
+    }
+}
+
+trait User
+{
+    function getUser($name)
+    {
+        return ucfirst($name);
+    }
+}
+
+class Welcome
+{
+    use Hello, User;
+}
+
+$obj = new Welcome();
+echo $obj->getGreet(), ', ', $obj->getUser('john'), '!'; // Hello, John!
+```
+
+#### Полезные функции
+
+<http://php.net/manual/ru/ref.classobj.php>
