@@ -20,6 +20,6 @@
     * [Автоматическая загрузка класса](php-specialist-level-3-oop.md#autoload)
     * [Доступ к свойствам и методам](php-specialist-level-3-oop.md#modifiers)
     * [Финальные классы и методы. Типажи (traits)](php-specialist-level-3-oop.md#final)
-  * [ООП с базой данных SQLite](php-specialist-level-3-oop-and-sqlite.md)
+  * [ООП с SQLite, XML](php-specialist-level-3-oop-and-sqlite.md)
 * [PHP - Полезные функции](php-useful-function.md)
 * [GIT - Полезные команды](git-useful-commands.md)
