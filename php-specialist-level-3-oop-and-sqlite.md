@@ -118,6 +118,57 @@ echo xml_error_string(xml_get_error_code($sax));
 ```
 
 * DOM (Document Object Model) - чтение, модификация и создание новых XML документов
+
+Самый ресурсоёмкий, весь документ зачитывается в память и строится дерево узлов.
+Идея DOM: всё что есть в документе - это узел (даже комментарий, табуляции и переносы строк). Узлы в ООП являются объектами.
+Существуют типы узлов документа: ELEMENT, ATTRIBUTE, TEXT, COMMENT, DocumentType.
+
+```php
+// Создание объекта, экземпляра класса DomDocument
+$dom = new DomDocument();
+// Загрузка документа
+$dom->load("catalog.xml");
+// Получение коневого элемента
+$root = $dom->documentElement; // тут будет каталог объектов
+// Получение типа узла
+echo $root->nodeType; // 1
+// Получение коллекции дочерних узлов (экземпляр класса DomNodeList)
+$children = $root->childNodes; // сразу кидать в foreach
+// Получение текстового содержимого узла
+$content = $root->textContent; // получим весь текст
+// Получение коллекции элементов с определённым именем
+$books = $dom->getElementsByTagName("book");
+
+// Создание/изменение XML-документа
+
+// Создание объекта, экземпляра класса DomDocument
+$dom = new DomDocument("1.0", "utf-8");
+// Получение коневого элемента
+$root = $dom->documentElement;
+// Создание новых элементов
+$book = $dom->createElement("book");
+$title = $dom->createElement("title");
+// Создание текстового узла
+$text = $dom->createTextNode("Название книги");
+// Другой вариант создания нового элемента
+$author = $dom->createElement("author", "Автор книги"); // в таком случае не нужно выполнять $title->appendChild($text);
+// Добавление узлов к узлам
+$title->appendChild($text);
+$book->appendChild($title);
+$root->appendChild($book);
+// Добавляем узел к узлу перед другим узлом
+$book->insertBefore($author, $title);
+
+// Создаём секцию CDATA (обёртка для текста, в таком тексте можно использовать любые символы)
+$description = $dom->createElement("description");
+$cdata = $dom->createCDATASection("...описание книги...");
+$description->appendChild($cdata);
+$book->appendChild($description);
+
+// Сохраняем документ
+$dom->save("catalog.xml");
+```
+
 * SimpleXML - разработан php для чтение и модификация XML-документов
 * XMLReader и XMLWriter - чтение и модификация XML-документов
 * XSL/T (Extensible StylesheetLanguage Transformations) - преобразование XML-документов в другие форматы
