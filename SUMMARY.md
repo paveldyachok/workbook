@@ -24,4 +24,5 @@
 * [PHP - Полезные функции](php-useful-function.md)
 * [GIT - Полезные команды](git-useful-commands.md)
 * [WordPress](wordpress.md)
+* [JS - Полезные функции](js-poleznie-funktsii.md)
 
