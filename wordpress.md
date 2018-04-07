@@ -2,6 +2,8 @@
 
 [Создание темы (натяжка шаблона)](https://www.youtube.com/playlist?list=PLcVuGt1dXgc3PQhr1Lg-BGh3X3svQl0ze)
 
+[Натяжка HTML на WordPress](https://wpruse.ru/courses/html2wp/natyazhka-html-na-wordpress-chast-1/)
+
 ## Полезные сайты
 
 [Создание базового шаблона](https://underscores.me/)
