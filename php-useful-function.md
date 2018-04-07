@@ -60,3 +60,41 @@ if ($error){
 ```php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {}
 ```
+
+#### Отправка на e-mail
+
+[stackoverflow](https://ru.stackoverflow.com/questions/31874/%D0%9E%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%BD%D0%B0-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80)
+
+Форма:
+
+```php
+<form action="mail.php" method="post">
+<textarea name="mess"></textarea>
+<input type="text" name="email">
+<input type="submit" value="send">
+</form>
+```
+
+mail.php
+
+```php
+if(isset($_POST['mess'])){
+    //проверки на правильность данных
+
+    $admin_mail = 'your@email.ru';
+    $subj = 'Новое сообщение';
+    $mess = htmlspecialchars($_POST['mess']);
+    $headers = 'From: site@mail.ru' . PHP_EOL;
+    $headers .= 'Content-type: text/plain; charset=utf-8' . PHP_EOL;
+
+    if(mail($admin_mail, $subj, $mess, $headers)){
+        //сообщение было выслано
+    }
+    else{
+        //ошибка при отправке
+    }
+}
+```
+
+
+
