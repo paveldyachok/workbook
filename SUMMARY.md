@@ -5,7 +5,7 @@
 * [PHP - Специалист. Уровень - 2](php-specialist-level-2.md)
   * [Изучение Cookie](php-specialist-level-2.md#cookie)
   * [HTTP-заголовки ответа сервера](php-specialist-level-2.md#http-headers)
-  * [Использование сеансов (сессий)](php-specialist-level-2.md#sessions)
+  * [Использование сеансов \(сессий\)](php-specialist-level-2.md#sessions)
   * [Операции с файлами и директориями](php-specialist-level-2.md#files-and-dirs)
   * [Основы работы с СУБД](php-specialist-level-2.md#DBMS)
 * PHP - Специалист. Уровень - 3
@@ -19,7 +19,9 @@
     * [Константы и статические члены класса](php-specialist-level-3-oop.md#const)
     * [Автоматическая загрузка класса](php-specialist-level-3-oop.md#autoload)
     * [Доступ к свойствам и методам](php-specialist-level-3-oop.md#modifiers)
-    * [Финальные классы и методы. Типажи (traits)](php-specialist-level-3-oop.md#final)
+    * [Финальные классы и методы. Типажи \(traits\)](php-specialist-level-3-oop.md#final)
   * [ООП с SQLite, XML](php-specialist-level-3-oop-and-sqlite.md)
 * [PHP - Полезные функции](php-useful-function.md)
 * [GIT - Полезные команды](git-useful-commands.md)
+* [WordPress](wordpress.md)
+
