@@ -25,3 +25,12 @@ function formatText(str) {
 let text = formatText(el.target.dataset.val);
 commentText.innerHTML = commentText.innerHTML.replace(new RegExp(text,'g'), '');
 ```
+
+#### Получение ID выбранной в select опции и поиск индекса в массиве объектов по свойству ID
+
+```js
+nasosVariants.onchange = function () {
+    const selectID = this.selectedOptions[0].id;
+    const index = dataNasos.arrNasosiv.findIndex(x => x.id == selectID);
+}
+```
