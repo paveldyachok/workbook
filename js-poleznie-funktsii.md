@@ -34,3 +34,10 @@ nasosVariants.onchange = function () {
     const index = dataNasos.arrNasosiv.findIndex(x => x.id == selectID);
 }
 ```
+
+#### Регулярка, оставляем в строке только цифры и "-" далее преобразуем в массив
+
+```js
+let arrRange = key.match(/[-\d]+/g)[0].split('-');
+```
+
