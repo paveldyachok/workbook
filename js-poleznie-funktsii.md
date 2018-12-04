@@ -41,3 +41,68 @@ nasosVariants.onchange = function () {
 let arrRange = key.match(/[-\d]+/g)[0].split('-');
 ```
 
+
+#### Обработка нажатия кнопок клавиатуры
+
+```js
+var mainCharsArr = [8, 37, 39];
+var numbersCharsArr = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
+document.onkeypress = function (key) {
+    // console.log(key.which);
+    var charsLimit, charsArr, allowableCharsArr, maxValue = false;
+
+    var classList = key.target.classList;
+    for (const className of classList) {
+        switch (className) {
+            case 'zahalVidstan':
+                charsLimit = 4;
+                maxValue = 1000;
+                // charsArr = [43, 120, 1093, 42, 46, 44];
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+            case 'zahalObyem':
+                charsLimit = 5;
+                maxValue = 10000;
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+            case 'minimalkaVal':
+            case 'pivzminyVal':
+            case 'zminaVal':
+                charsLimit = 7;
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+            case 'zonaKievaVal':
+                charsLimit = 2;
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+            case 'selectCinaVar':
+                charsLimit = 6;
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+            case 'selectCinaDodatVar':
+                charsLimit = 5;
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+            case 'selectGodyn':
+                charsLimit = 2;
+                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
+                break;
+        }
+    }
+
+    // ограничение количества введённых символов
+    if (charsLimit && key.target.value.length >= charsLimit) {
+        return false;
+    }
+
+    // проверка на допустимые символы
+    if (allowableCharsArr && $.inArray(key.which, allowableCharsArr) == -1) {
+        return false;
+    }
+
+    // проверка на максимальное значение
+    if (maxValue && parseInt(key.target.value + '' + key.key) > maxValue) {
+        return false;
+    }
+};
+```
