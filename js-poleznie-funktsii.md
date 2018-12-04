@@ -60,33 +60,6 @@ document.onkeypress = function (key) {
                 // charsArr = [43, 120, 1093, 42, 46, 44];
                 allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
                 break;
-            case 'zahalObyem':
-                charsLimit = 5;
-                maxValue = 10000;
-                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
-                break;
-            case 'minimalkaVal':
-            case 'pivzminyVal':
-            case 'zminaVal':
-                charsLimit = 7;
-                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
-                break;
-            case 'zonaKievaVal':
-                charsLimit = 2;
-                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
-                break;
-            case 'selectCinaVar':
-                charsLimit = 6;
-                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
-                break;
-            case 'selectCinaDodatVar':
-                charsLimit = 5;
-                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
-                break;
-            case 'selectGodyn':
-                charsLimit = 2;
-                allowableCharsArr = mainCharsArr.concat(numbersCharsArr);
-                break;
         }
     }
 
