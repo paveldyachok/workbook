@@ -83,8 +83,8 @@ document.onkeypress = function (key) {
 #### Копирование в буфер обмена по клику
 
 ```html
-    <p id="bisnesPartnerUrl" class="refUrl">http://.../?ref={$user.uLogin}</p>
-    <img src="{$img_path}img/copy-content.png" alt="copy" onclick="copyClipboard('bisnesPartnerUrl')">
+<p id="bisnesPartnerUrl" class="refUrl">http://.../?ref={$user.uLogin}</p>
+<img src="{$img_path}img/copy-content.png" alt="copy" onclick="copyClipboard('bisnesPartnerUrl')">
 ```
 
 ```js
