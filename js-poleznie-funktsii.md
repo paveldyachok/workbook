@@ -79,3 +79,22 @@ document.onkeypress = function (key) {
     }
 };
 ```
+
+#### Копирование в буфер обмена по клику
+
+```html
+    <p id="bisnesPartnerUrl" class="refUrl">http://.../?ref={$user.uLogin}</p>
+    <img src="{$img_path}img/copy-content.png" alt="copy" onclick="copyClipboard('bisnesPartnerUrl')">
+```
+
+```js
+function copyClipboard(nameID) {
+    var url = document.getElementById(nameID).innerHTML;
+    var el = document.createElement('textarea');
+    el.value = url;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+}
+```
