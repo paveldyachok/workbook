@@ -99,7 +99,7 @@ function copyClipboard(nameID) {
 }
 ```
 
-#### Переключатель блоков
+#### Переключатель блоков (NBT, cabinet)
 
 ```js
 /** SWITCH INVEST VARIANTS */
