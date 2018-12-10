@@ -98,3 +98,28 @@ function copyClipboard(nameID) {
     document.body.removeChild(el);
 }
 ```
+
+#### Переключатель блоков
+
+```js
+/** SWITCH INVEST VARIANTS */
+if (target = document.getElementById('investVarBlock')) {
+    var spans = target.querySelectorAll('.investSelect span');
+    for (const i of spans) {
+        i.addEventListener('click', function () {
+            delActiveVar(target.querySelectorAll('.varBlock'), 'activeVar');
+            var selectVar = target.querySelector('#' + this.dataset.target);
+            selectVar.classList.add('activeVar');
+
+            delActiveVar(spans, 'activeSelect');
+            i.classList.add('activeSelect');
+        });
+    }
+
+    function delActiveVar(elementsArr, className) {
+        for (const i of elementsArr) {
+            i.classList.remove(className);
+        }
+    }
+}
+```
