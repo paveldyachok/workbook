@@ -17,10 +17,10 @@ function d($value = null, $die = 1){
 ```php
 function cl($var, $label = '')
 {
-	ob_start();
-	var_dump($var);
-	$result = json_encode(ob_get_clean());
-	echo "<script>console.group('".$label."');console.log('".$result."');console.groupEnd();</script>";
+    ob_start();
+    var_dump($var);
+    $result = json_encode(ob_get_clean());
+    echo "<script>console.group('".$label."');console.log('".$result."');console.groupEnd();</script>";
 }
 ```
 ---
