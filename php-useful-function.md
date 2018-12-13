@@ -12,6 +12,17 @@ function d($value = null, $die = 1){
 }
 ```
 
+Выводит значение переменной в консоле браузера.
+
+```php
+function cl($var, $label = '')
+{
+	ob_start();
+	var_dump($var);
+	$result = json_encode(ob_get_clean());
+	echo "<script>console.group('".$label."');console.log('".$result."');console.groupEnd();</script>";
+}
+```
 ---
 
 #### PHP - Обработка ошибок
