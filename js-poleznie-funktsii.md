@@ -80,6 +80,21 @@ document.onkeypress = function (key) {
 };
 ```
 
+#### Запрет ввода кириллицы
+
+```js
+// ONLY LATIN CHARACTERS
+var inputElements = kycBlock.querySelectorAll('.fieldsBlock input');
+for (const i of inputElements) {
+    i.onkeydown = function(e) {
+        var reg = /[а-яА-ЯёЁ]/g;
+        if (e.key.search(reg) != -1) {
+            return false;
+        }
+    }
+}
+```
+
 #### Копирование в буфер обмена по клику
 
 ```html
