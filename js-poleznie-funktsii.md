@@ -138,3 +138,18 @@ if (target = document.getElementById('investVarBlock')) {
     }
 }
 ```
+
+#### Отслеживание изменений в DOM
+
+```js
+var nasosVariants = document.querySelector('.nasosVariants');
+
+// Функция которая вызывается при изменеиях childList в элементе nasosVariants
+function resetSelectedParams() {
+    // code..
+}
+
+new MutationObserver(resetSelectedParams).observe(nasosVariants, {
+    childList: true
+});
+```
