@@ -140,6 +140,7 @@ if (target = document.getElementById('investVarBlock')) {
 ```
 
 #### Отслеживание изменений в DOM
+[статья](https://habr.com/company/ruvds/blog/351256/)
 
 ```js
 var nasosVariants = document.querySelector('.nasosVariants');
