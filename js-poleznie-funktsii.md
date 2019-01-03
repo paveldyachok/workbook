@@ -73,8 +73,19 @@ document.onkeypress = function (key) {
         return false;
     }
 
+    // получаем значение из разных видов полей
+    let val = '';
+    switch (key.target.localName) {
+        case 'input':
+            val = key.target.value;
+            break;
+        default:
+            val = key.target.innerText;
+            break;
+    }
+    
     // проверка на максимальное значение
-    if (maxValue && parseInt(key.target.value + '' + key.key) > maxValue) {
+    if (maxValue && parseInt(val + '' + key.key) > maxValue) {
         return false;
     }
 };
