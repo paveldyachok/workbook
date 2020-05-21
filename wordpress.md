@@ -1,8 +1,10 @@
+# WordPress
+
 ## Видео уроки
 
 [Грамотная посадка верстки на WordPres](https://www.youtube.com/watch?v=WFEgmNfvpnw)
 
-[Создание темы (натяжка шаблона)](https://www.youtube.com/playlist?list=PLcVuGt1dXgc3PQhr1Lg-BGh3X3svQl0ze)
+[Создание темы \(натяжка шаблона\)](https://www.youtube.com/playlist?list=PLcVuGt1dXgc3PQhr1Lg-BGh3X3svQl0ze)
 
 [Натяжка HTML на WordPress](https://wpruse.ru/courses/html2wp/natyazhka-html-na-wordpress-chast-1/)
 
@@ -14,7 +16,7 @@
 
 [wp-kama.ru](https://wp-kama.ru/)
 
-[Добавляем область для виджетов (widget area)](http://tkacheff.ru/362/dobavlyaem-oblast-dlya-vidzhetov-widget-area-v-wordpress/)
+[Добавляем область для виджетов \(widget area\)](http://tkacheff.ru/362/dobavlyaem-oblast-dlya-vidzhetov-widget-area-v-wordpress/)
 
 [Обучение WordPress для разработчика](https://toster.ru/q/403546#answer_982778)
 
@@ -25,7 +27,8 @@
 ## Плагины
 
 * Contact Form 7
-* Pie Register (Base)
+* Pie Register \(Base\)
 * qTranslate-X
 * TinyMCE Advanced
 * Расширенные произвольные поля
+

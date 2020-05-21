@@ -1,16 +1,18 @@
-#### Получение данных из input'ов без формы
+# JS - Полезные функции
+
+## Получение данных из input'ов без формы
 
 [stackoverflow](https://ru.stackoverflow.com/questions/247752/%D0%9F%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%B8%D0%B7-input%D0%BE%D0%B2-%D0%B1%D0%B5%D0%B7-%D1%84%D0%BE%D1%80%D0%BC%D1%8B)
 
-```html
+```markup
 <a href="#" onclick="document.getElementById('myform').submit(); return false;">Отправить</a>
 ```
 
-#### Для экранирования специальных знаков (-, /, \, ^, $, *, +, ?, ., (, ), |, [, ], {, })
+## Для экранирования специальных знаков \(-, /, \, ^, $, \*, +, ?, ., \(, \), \|, \[, \], {, }\)
 
 [stackoverflow](https://ru.stackoverflow.com/questions/434779/%D0%97%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-%D0%B2%D1%8B%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%89%D0%B5%D0%B3%D0%BE-%D0%BA%D1%80%D1%83%D0%B3%D0%BB%D1%8B%D0%B5-%D1%81%D0%BA%D0%BE%D0%B1%D0%BA%D0%B8-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-replace)
 
-```js
+```javascript
 function formatText(str) {
     let searchText = ' ' + str;
     RegExp.escape = function(text) {
@@ -21,30 +23,30 @@ function formatText(str) {
 ```
 
 Вызов:
-```js
+
+```javascript
 let text = formatText(el.target.dataset.val);
 commentText.innerHTML = commentText.innerHTML.replace(new RegExp(text,'g'), '');
 ```
 
-#### Получение ID выбранной в select опции и поиск индекса в массиве объектов по свойству ID
+## Получение ID выбранной в select опции и поиск индекса в массиве объектов по свойству ID
 
-```js
+```javascript
 nasosVariants.onchange = function () {
     const selectID = this.selectedOptions[0].id;
     const index = dataNasos.arrNasosiv.findIndex(x => x.id == selectID);
 }
 ```
 
-#### Регулярка, оставляем в строке только цифры и "-" далее преобразуем в массив
+## Регулярка, оставляем в строке только цифры и "-" далее преобразуем в массив
 
-```js
+```javascript
 let arrRange = key.match(/[-\d]+/g)[0].split('-');
 ```
 
+## Обработка нажатия кнопок клавиатуры
 
-#### Обработка нажатия кнопок клавиатуры
-
-```js
+```javascript
 var mainCharsArr = [8, 37, 39];
 var numbersCharsArr = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57];
 document.onkeypress = function (key) {
@@ -83,7 +85,7 @@ document.onkeypress = function (key) {
             val = key.target.innerText;
             break;
     }
-    
+
     // проверка на максимальное значение
     if (maxValue && parseInt(val + '' + key.key) > maxValue) {
         return false;
@@ -91,9 +93,9 @@ document.onkeypress = function (key) {
 };
 ```
 
-#### Запрет ввода кириллицы
+## Запрет ввода кириллицы
 
-```js
+```javascript
 // ONLY LATIN CHARACTERS
 var inputElements = kycBlock.querySelectorAll('.fieldsBlock input');
 for (const i of inputElements) {
@@ -106,14 +108,14 @@ for (const i of inputElements) {
 }
 ```
 
-#### Копирование в буфер обмена по клику
+## Копирование в буфер обмена по клику
 
-```html
+```markup
 <p id="bisnesPartnerUrl" class="refUrl">http://.../?ref={$user.uLogin}</p>
 <img src="{$img_path}img/copy-content.png" alt="copy" onclick="copyClipboard('bisnesPartnerUrl')">
 ```
 
-```js
+```javascript
 function copyClipboard(nameID) {
     var url = document.getElementById(nameID).innerHTML;
     var el = document.createElement('textarea');
@@ -125,9 +127,9 @@ function copyClipboard(nameID) {
 }
 ```
 
-#### Переключатель блоков (NBT, cabinet)
+## Переключатель блоков \(NBT, cabinet\)
 
-```js
+```javascript
 /** SWITCH INVEST VARIANTS */
 if (target = document.getElementById('investVarBlock')) {
     var spans = target.querySelectorAll('.investSelect span');
@@ -150,10 +152,11 @@ if (target = document.getElementById('investVarBlock')) {
 }
 ```
 
-#### Отслеживание изменений в DOM
+## Отслеживание изменений в DOM
+
 [статья](https://habr.com/company/ruvds/blog/351256/)
 
-```js
+```javascript
 var nasosVariants = document.querySelector('.nasosVariants');
 
 // Функция которая вызывается при изменеиях childList в элементе nasosVariants
@@ -165,3 +168,4 @@ new MutationObserver(resetSelectedParams).observe(nasosVariants, {
     childList: true
 });
 ```
+
